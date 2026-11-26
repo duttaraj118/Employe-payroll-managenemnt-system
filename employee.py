@@ -93,15 +93,56 @@ class EmployeeSystem:
         lbl_netsalary = Label(Frame2, text = "Net Salary", font=("times new roman",18), bg="white", fg="black").place(x=300, y=150)
         txt_netsalary = Entry(Frame2, font=("times new roman",15), bg="lightyellow", fg="black").place(x=420, y=185, width=120)
 
-        btn_calculate = Button(Frame1, text = "Calculate", font=("times new roman",20), bg="gray", fg="black").place(x=440, y=72, height= 30)
-        btn_save = Button(Frame1, text = "Save", font=("times new roman",20), bg="gray", fg="black").place(x=440, y=72, height= 30)
-        btn_clear = Button(Frame1, text = "Clear", font=("times new roman",20), bg="gray", fg="black").place(x=440, y=72, height= 30)
-        btn_print = Button(Frame1, text = "Print", font=("times new roman",20), bg="gray", fg="black").place(x=440, y=72, height= 30)
+        btn_calculate = Button(Frame2, text = "Calculate", font=("times new roman",20), bg="orange", fg="black").place(x=150, y=240, height= 30, width=120)
+        btn_save = Button(Frame2, text = "Save", font=("times new roman",20), bg="green", fg="white").place(x=230, y=240, height= 30, width=120)
+        btn_clear = Button(Frame2, text = "Clear", font=("times new roman",20), bg="gray", fg="black").place(x=360, y=240, height= 30, width=120)
 
         #================Frame3====================
         Frame3 = Frame(self.root,bd=3,relief=RIDGE,bg="White")
         Frame3.place(x = 770, y = 380, width = 580, height = 310)
 
+        #================Calculator Frame==========
+        self.var_txt = StringVar() 
+        self. var_operator = ''
+        def btn_click(num):
+            self.var_operator=var_operator+str(num)
+            self.var_txt.set(self.var_operator)
+
+        def result():
+            res=str(eval(self.val_operator))
+            self.var_txt.set(res)
+            self. var_operator = ''
+  
+
+        Cal_Frame = Frame(Frame3, bg="White",bd=2,relief=RIDER)
+        cal_Frame.place(x=2,y=2,width=247,height=300)
+
+        txt_Result = Entry(cal_Frame, bg='lightyellow',textvariable=var_txt,font = ("times new Roman",20, "bold"),justify=RIGHT).place(x=0,y=0,relwidth=1,height=50)
+
+        #================Row1==================
+        btn_7=Button(cal_Frame, text = '7',command=lambda:btn_click(7), font =("times new roman",15, "bold")).place(x=0, y=52, w=60, h=60)
+        btn_8=Button(cal_Frame, text = '8',command=lambda:btn_click(8), font =("times new roman",15, "bold")).place(x=61, y=52, w=60, h=60)
+        btn_9=Button(cal_Frame, text = '9',command=lambda:btn_click(9), font =("times new roman",15, "bold")).place(x=122, y=52, w=60, h=60)
+        btn_div=Button(cal_Frame, text = '/',command=lambda:btn_click('/'), font =("times new roman",15, "bold")).place(x=183, y=52, w=60, h=60)
+
+        #================Row2==================
+        btn_4=Button(cal_Frame, text = '4',command=lambda:btn_click(4), font =("times new roman",15, "bold")).place(x=0, y=112, w=60, h=60)
+        btn_5=Button(cal_Frame, text = '5',command=lambda:btn_click(5), font =("times new roman",15, "bold")).place(x=61, y=112, w=60, h=60)
+        btn_6=Button(cal_Frame, text = '6',command=lambda:btn_click(6), font =("times new roman",15, "bold")).place(x=122, y=112, w=60, h=60)
+        btn_mul=Button(cal_Frame, text = '*',command=lambda:btn_click('*'), font =("times new roman",15, "bold")).place(x=183, y=112, w=60, h=60)
+
+        #================Row3==================
+        btn_1=Button(cal_Frame, text = '1',command=lambda:btn_click(1), font =("times new roman",15, "bold")).place(x=0, y=172, w=60, h=60)
+        btn_2=Button(cal_Frame, text = '2',command=lambda:btn_click(2), font =("times new roman",15, "bold")).place(x=61, y=172, w=60, h=60)
+        btn_3=Button(cal_Frame, text = '3',command=lambda:btn_click(3), font =("times new roman",15, "bold")).place(x=122, y=172, w=60, h=60)
+        btn_min=Button(cal_Frame, text = '-',command=lambda:btn_click('-'), font =("times new roman",15, "bold")).place(x=183, y=172, w=60, h=60)
+
+        #================Row4==================
+        btn_0=Button(cal_Frame, text = '0',command=lambda:btn_click(0), font =("times new roman",15, "bold")).place(x=0, y=233, w=60, h=60)
+        btn_dot=Button(cal_Frame, text = '.',command=lambda:btn_click('.'), font =("times new roman",15, "bold")).place(x=61, y=233, w=60, h=60)
+        btn_sum=Button(cal_Frame, text = '+',command=lambda:btn_click('+'), font =("times new roman",15, "bold")).place(x=122, y=233, w=60, h=60)
+        btn_equal=Button(cal_Frame, text = '=',command=result,font =("times new roman",15,"bold")).place(x=183, y=233, w=60, h=60)
+        
 root = Tk()
 obj = EmployeeSystem(root)
 root.mainloop() 
