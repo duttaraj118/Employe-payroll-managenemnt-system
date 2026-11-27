@@ -112,7 +112,9 @@ class EmployeeSystem:
             res=str(eval(self.val_operator))
             self.var_txt.set(res)
             self. var_operator = ''
-  
+        def clear_cal():
+            self.var_txt.set('')
+            self. var_operator = ''
 
         Cal_Frame = Frame(Frame3, bg="White",bd=2,relief=RIDER)
         cal_Frame.place(x=2,y=2,width=247,height=300)
@@ -139,10 +141,29 @@ class EmployeeSystem:
 
         #================Row4==================
         btn_0=Button(cal_Frame, text = '0',command=lambda:btn_click(0), font =("times new roman",15, "bold")).place(x=0, y=233, w=60, h=60)
-        btn_dot=Button(cal_Frame, text = '.',command=lambda:btn_click('.'), font =("times new roman",15, "bold")).place(x=61, y=233, w=60, h=60)
+        btn_dot=Button(cal_Frame, text = 'c',command=clear_cal, font =("times new roman",15, "bold")).place(x=61, y=233, w=60, h=60)
         btn_sum=Button(cal_Frame, text = '+',command=lambda:btn_click('+'), font =("times new roman",15, "bold")).place(x=122, y=233, w=60, h=60)
         btn_equal=Button(cal_Frame, text = '=',command=result,font =("times new roman",15,"bold")).place(x=183, y=233, w=60, h=60)
-        
+
+        #================Salary Frame==========
+        sal_Frame=Frame(Frame3,bg="white",bd=2,relief=RIDGE)
+        sal_Frame.place(x=251, y=2, width=320,height=300)
+        title_sal = Label(sal_Frame, text = "Salary Reciept", font=("times new roman",20), bg="lightgray", fg="black",anchor="w", padx=10).place(x=0, y=0, relwidth=1)
+
+        sal_Frame2=Frame(sal_Frame, bg='white',bd=2,relief=RIDGE)
+        sal_Frame2.place(x=0,y=30,relwidth=1,height=230)
+
+        scroll_y=Scrollbar(sal_Frame2,orient=VERTICAL)
+        scroll_y.pack(fill=y,side=RIGHT)
+
+        self.txt_salary_recipt=Text(sal_Frame2,font=("times new roman", 15),bg='lighyellow',yscrollcommand=scroll_y.set)
+        self.txt_salary_recipt.pack(fill= BOTH, expand=1)
+        scroll_y.config(command=self.txt_salary_recipt.yview)
+
+        btn_print = Button(sal_Frame, text = "Print", font=("times new roman",20), bg="lightblue", fg="black").place(x=180, y=262, height= 30, width=120)
+
+
+
 root = Tk()
 obj = EmployeeSystem(root)
 root.mainloop() 
